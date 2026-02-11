@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pentru Oana ✨</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at top, #ff9a9e, #fecfef);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+    text-align: center;
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+
+  #message {
+    font-size: 1.3em;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff6b6b;
+    margin-bottom: 20px;
+  }
+
+  button {
+    padding: 12px 25px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 10px;
+    background: #ff6b6b;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+
+  button:hover {
+    transform: scale(1.1);
+  }
+
+  .heart {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: red;
+    transform: rotate(-45deg);
+    animation: float 5s linear infinite;
+  }
+
+  .heart::before,
+  .heart::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: red;
+    border-radius: 50%;
+  }
+
+  .heart::before { top: -20px; left: 0; }
+  .heart::after { top: 0; left: 20px; }
+
+  @keyframes float {
+    0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
+    100% { transform: translateY(-800px) rotate(-45deg); opacity: 0; }
+  }
+
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: twinkle 2s infinite alternate;
+  }
+
+  @keyframes twinkle {
+    from { opacity: 0.3; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1.2); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>✨ Pentru Oana ✨</h1>
+  <div id="message"></div>
+  <button onclick="startMagic()">Deschide magia ❤️</button>
+</div>
+
+<script>
+const text = `Oana, tu ești lumina care îmi luminează fiecare zi.
+Fiecare zâmbet al tău îmi aduce liniște și bucurie.
+Mă pierd în ochii tăi și mă regăsesc în glasul tău.
+Tot ce faci, tot ce spui, tot ce ești mă inspiră să fiu mai bun.
+
+Îmi place felul în care râzi, modul în care îți strălucesc ochii atunci când ești fericită.
+Îmi place să te privesc, să-ți simt prezența și să știu că suntem împreună.
+Fiecare clipă cu tine devine amintire prețioasă și fiecare gând către tine e plin de dragoste.
+
+Oana, tu ești inima mea, sufletul meu pereche, cea care îmi face viața completă.
+Sper să simți și tu toată dragostea pe care eu ți-o port.
+Vreau să fim împreună, să râdem, să visăm și să iubim fără sfârșit.
+Te iubesc dincolo de cuvinte, dincolo de timp și spațiu. 💖`;
+
+let index = 0;
+const messageEl = document.getElementById('message');
+
+function typeWriter() {
+  if (index < text.length) {
+    messageEl.innerHTML += text.charAt(index);
+    index++;
+    setTimeout(typeWriter, 60);
+  }
+}
+
+function startMagic() {
+  typeWriter();
+  spawnHearts();
+  spawnStars();
+}
+
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.style.left = Math.random() * window.innerWidth + 'px';
+  heart.style.animationDuration = 3 + Math.random() * 5 + 's';
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 8000);
+}
+
+function spawnHearts() {
+  setInterval(createHeart, 400);
+}
+
+function createStar() {
+  const star = document.createElement('div');
+  star.className = 'star';
+  star.style.left = Math.random() * window.innerWidth + 'px';
+  star.style.top = Math.random() * window.innerHeight + 'px';
+  star.style.animationDuration = 1 + Math.random() * 2 + 's';
+  document.body.appendChild(star);
+  setTimeout(() => star.remove(), 5000);
+}
+
+function spawnStars() {
+  setInterval(createStar, 200);
+}
+</script>
+</body>
+</html>
